@@ -3,4 +3,6 @@ set -e
 
 chsh -s /usr/bin/zsh
 
-echo "source $(dirname $0)/../src/config.zsh" > ~/.zshrc
+cd "$(dirname $0)/.."
+
+echo "source $PWD/src/config.zsh" > ~/.zshrc
