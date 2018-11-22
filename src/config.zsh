@@ -67,6 +67,12 @@ alias debian="boop debian"
 alias alpine="boop alpine"
 alias suse="boop opensuse bash"
 
+# Git
+alias nuke="git reset --hard HEAD && git clean -xdf"
+
+# Cmake
+alias cgraph="cmake -Bbuild -H. --graphviz=build/i.dot &&  dot -Tps build/i.dot -o graph.ps"
+
 # AWS
 alias aws='docker run --rm -t $(tty &>/dev/null && echo "-i") -e AWS_ACCESS_KEY_ID -e AWS_SECRET_ACCESS_KEY -e AWS_DEFAULT_REGION -v "$(pwd):/project" mesosphere/aws-cli'
 alias awsnodes='aws ec2 describe-instances --query "Reservations[*].Instances[*].[Tags[?Key==\`Name\`].Value[],State.Name,KeyName,InstanceType,InstanceId,ImageId,SubnetId,NetworkInterfaces[*].Association.PublicIp,SecurityGroups[*].GroupId,NetworkInterfaces[*].PrivateIpAddress]"'
