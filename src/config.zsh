@@ -90,6 +90,7 @@ _ apt install -y \
 	vim \
 	keepassx \
 	gnome-tweak-tool \
+	chrome-gnome-shell \
 	clusterssh \
 	matcha-theme \
 	network-manager-openvpn \
