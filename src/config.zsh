@@ -72,6 +72,7 @@ alias nuke="git reset --hard HEAD && git clean -xdf"
 
 # Cmake
 alias cgraph="cmake -Bbuild -H. --graphviz=build/i.dot &&  dot -Tps build/i.dot -o graph.ps"
+alias build="cmake -Bbuild -H. -GNinja && cmake --build build"
 
 # AWS
 alias aws='docker run --rm -t $(tty &>/dev/null && echo "-i") -e AWS_ACCESS_KEY_ID -e AWS_SECRET_ACCESS_KEY -e AWS_DEFAULT_REGION -v "$(pwd):/project" mesosphere/aws-cli'
