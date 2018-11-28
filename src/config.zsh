@@ -99,6 +99,7 @@ _ apt install -y \
 _ snap install --classic vscode && \
 _ snap install --classic slack && \
 _ snap install \
+	gitkraken \
 	discord \
 	spotify \
 	hexchat \
