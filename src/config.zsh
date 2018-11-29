@@ -93,12 +93,14 @@ _ apt install -y \
 	vim \
 	keepassx \
 	gnome-tweak-tool \
+	chrome-gnome-shell \
 	clusterssh \
 	network-manager-openvpn \
 	network-manager-openvpn-gnome && \
 _ snap install --classic vscode && \
 _ snap install --classic slack && \
 _ snap install \
+	gitkraken \
 	discord \
 	spotify \
 	hexchat \
