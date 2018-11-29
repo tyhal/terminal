@@ -5,4 +5,6 @@ chsh -s /usr/bin/zsh
 
 cd "$(dirname $0)/.."
 
-echo "source $(pwd)/src/config.zsh" > ~/.zshrc
+echo "source $PWD/src/config.zsh" > ~/.zshrc
+
+echo "Please log out and log back in"
