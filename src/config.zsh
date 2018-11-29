@@ -70,6 +70,9 @@ alias suse="boop opensuse bash"
 # Git
 alias nuke="git reset --hard HEAD && git clean -xdf"
 
+# Project Init
+alias projinit="mkdir script && touch README.md CONTRIBUTING.md script/test script/bootstrap"
+
 # Cmake
 alias cgraph="cmake -Bbuild -H. --graphviz=build/i.dot &&  dot -Tps build/i.dot -o graph.ps"
 alias build="cmake -Bbuild -H. -GNinja && cmake --build build"
@@ -83,7 +86,6 @@ alias up="_ apt update;_ apt -y full-upgrade;_ apt -y autoremove"
 
 # Personal Prefs
 alias install-tyler="\
-_ add-apt-repository ppa:ryu0/aesthetics && \
 _ apt update && \
 _ apt install -y \
 	xfonts-terminus-oblique \
@@ -92,7 +94,6 @@ _ apt install -y \
 	keepassx \
 	gnome-tweak-tool \
 	clusterssh \
-	matcha-theme \
 	network-manager-openvpn \
 	network-manager-openvpn-gnome && \
 _ snap install --classic vscode && \
@@ -102,6 +103,11 @@ _ snap install \
 	spotify \
 	hexchat \
 "
+
+# FlatRemix
+# sudo add-apt-repository ppa:daniruiz/flat-remix
+# sudo apt-get update
+# sudo apt-get install flat-remix flat-remix-gnome flat-remix-gtk
 
 # All Font size 11
 # Window Title = Terminus Bold
