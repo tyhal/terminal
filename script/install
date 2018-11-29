@@ -5,4 +5,4 @@ chsh -s /usr/bin/zsh
 
 cd "$(dirname $0)/.."
 
-echo "source $PWD/src/config.zsh" > ~/.zshrc
+echo "source $(pwd)/src/config.zsh" > ~/.zshrc
