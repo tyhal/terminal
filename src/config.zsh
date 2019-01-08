@@ -1,3 +1,9 @@
+# ~~~~~~~~~~~~~~~~~~~
+# Kubernetes
+
+if [ $commands[kubectl] ]; then
+        source <(kubectl completion zsh)
+fi
 
 # ~~~~~~~~~~~~~~~~~~
 # Antigen Setup
@@ -45,13 +51,6 @@ antigen theme https://github.com/denysdovhan/spaceship-zsh-theme spaceship
 antigen apply
 
 # ~~~~~~~~~~~~~~~~~~~
-# Kubernetes
-
-if [ $commands[kubectl] ]; then
-  source <(kubectl completion zsh)
-fi
-
-# ~~~~~~~~~~~~~~~~~~~
 # Vars
  
 source "$(dirname $0)/vars.env"
@@ -86,6 +85,7 @@ alias up="_ apt update;_ apt -y full-upgrade;_ apt -y autoremove"
 
 # Personal Prefs
 alias install-tyler="\
+_ add-apt-repository ppa:daniruiz/flat-remix && \
 _ apt update && \
 _ apt install -y \
 	xfonts-terminus-oblique \
@@ -96,6 +96,9 @@ _ apt install -y \
 	chrome-gnome-shell \
 	clusterssh \
 	network-manager-openvpn \
+	flat-remix \
+	flat-remix-gnome \
+	flat-remix-gtk \
 	network-manager-openvpn-gnome && \
 _ snap install --classic vscode && \
 _ snap install --classic slack && \
@@ -105,11 +108,6 @@ _ snap install \
 	spotify \
 	hexchat \
 "
-
-# FlatRemix
-# sudo add-apt-repository ppa:daniruiz/flat-remix
-# sudo apt-get update
-# sudo apt-get install flat-remix flat-remix-gnome flat-remix-gtk
 
 # All Font size 11
 # Window Title = Terminus Bold
