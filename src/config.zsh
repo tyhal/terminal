@@ -91,8 +91,6 @@ alias install-tyler="\
 _ add-apt-repository ppa:daniruiz/flat-remix && \
 _ apt update && \
 _ apt install -y \
-	xfonts-terminus-oblique \
-	xfonts-terminus \
 	vim \
 	keepassx \
 	gnome-tweak-tool \
@@ -113,7 +111,7 @@ _ snap install \
 "
 
 # All Font size 11
-# Window Title = Terminus Bold
-# Interface = Terminus Regular
-# Document = Terminus Bold Oblique
-# Monospace = Terminus Regular
+# Window Title = Ubuntu Mono Bold
+# Interface =  Ubuntu Mono Regular
+# Document =  Ubuntu Mono Bold Oblique
+# Monospace =  Ubuntu Mono Regular
