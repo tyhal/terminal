@@ -1,3 +1,9 @@
+# ~~~~~~~~~~~~~~~~~~~
+# Kubernetes
+
+if [ $commands[kubectl] ]; then
+        source <(kubectl completion zsh)
+fi
 
 # ~~~~~~~~~~~~~~~~~~
 # Antigen Setup
@@ -39,17 +45,10 @@ antigen bundle chrissicool/zsh-256color
 antigen bundle zsh-users/zsh-syntax-highlighting
 
 # Load the theme.
-antigen theme https://github.com/denysdovhan/spaceship-zsh-theme spaceship
+antigen theme denysdovhan/spaceship-prompt
 
 # Tell Antigen that you're done.
 antigen apply
-
-# ~~~~~~~~~~~~~~~~~~~
-# Kubernetes
-
-if [ $commands[kubectl] ]; then
-  source <(kubectl completion zsh)
-fi
 
 # ~~~~~~~~~~~~~~~~~~~
 # Vars
@@ -71,11 +70,14 @@ alias suse="boop opensuse bash"
 alias nuke="git reset --hard HEAD && git clean -xdf"
 
 # Project Init
-alias projinit="mkdir script && touch README.md CONTRIBUTING.md script/test script/bootstrap"
+alias projinit="mkdir -p script && touch README.md CONTRIBUTING.md script/test script/bootstrap"
 
 # Cmake
 alias cgraph="cmake -Bbuild -H. --graphviz=build/i.dot &&  dot -Tps build/i.dot -o graph.ps"
 alias build="cmake -Bbuild -H. -GNinja && cmake --build build"
+
+# Terraform
+alias tfgraph="terraform graph | dot -Tps -o graph.ps"
 
 # AWS
 alias aws='docker run --rm -t $(tty &>/dev/null && echo "-i") -e AWS_ACCESS_KEY_ID -e AWS_SECRET_ACCESS_KEY -e AWS_DEFAULT_REGION -v "$(pwd):/project" mesosphere/aws-cli'
@@ -86,16 +88,18 @@ alias up="_ apt update;_ apt -y full-upgrade;_ apt -y autoremove"
 
 # Personal Prefs
 alias install-tyler="\
+_ add-apt-repository ppa:daniruiz/flat-remix && \
 _ apt update && \
 _ apt install -y \
-	xfonts-terminus-oblique \
-	xfonts-terminus \
 	vim \
 	keepassx \
 	gnome-tweak-tool \
 	chrome-gnome-shell \
 	clusterssh \
 	network-manager-openvpn \
+	flat-remix \
+	flat-remix-gnome \
+	flat-remix-gtk \
 	network-manager-openvpn-gnome && \
 _ snap install --classic vscode && \
 _ snap install --classic slack && \
@@ -106,13 +110,8 @@ _ snap install \
 	hexchat \
 "
 
-# FlatRemix
-# sudo add-apt-repository ppa:daniruiz/flat-remix
-# sudo apt-get update
-# sudo apt-get install flat-remix flat-remix-gnome flat-remix-gtk
-
 # All Font size 11
-# Window Title = Terminus Bold
-# Interface = Terminus Regular
-# Document = Terminus Bold Oblique
-# Monospace = Terminus Regular
+# Window Title = Ubuntu Mono Bold
+# Interface =  Ubuntu Mono Regular
+# Document =  Ubuntu Mono Bold Oblique
+# Monospace =  Ubuntu Mono Regular
