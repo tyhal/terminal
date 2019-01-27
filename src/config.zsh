@@ -90,19 +90,12 @@ alias nano="echo 'stop being bad, use vim to edit: '"
 # Update
 alias up="_ apt update;_ apt -y full-upgrade;_ apt -y autoremove"
 
-alias install-jetbrainstheme="ls -a "$HOME" \
-	| tr ' ' '\\n' \
-	| grep -E \"CLion|IntelliJ|GoLand\" \
-	| xargs -n 1 -I {} bash -c \"mkdir -p "$HOME"/{}/config/colors && wget -P "$HOME"/{}/config/colors https://raw.githubusercontent.com/dracula/jetbrains/master/Dracula.icls\""
-JETBRAIN_MSG="! ! If you are using Jetbrains you will need to add the Material-UI plugin and then set its settings to Dracula"
-
 alias install-dracula="mkdir -p ~/.themes \
 && wget -O Ant-Dracula.tar -P /tmp/ https://github.com/EliverLara/Ant-Dracula/releases/download/v1.3.0/Ant-Dracula.tar \
 && tar -xvf /tmp/Ant-Dracula.tar -C ~/.themes \
 && gsettings set org.gnome.desktop.wm.preferences theme Ant-Dracula \
 && gsettings set org.gnome.desktop.interface gtk-theme Ant-Dracula \
-&& gsettings set org.gnome.desktop.interface font-name 'Ubuntu Mono 11' \
-&& install-jetbrainstheme && echo $JETBRAIN_MSG"
+&& gsettings set org.gnome.desktop.interface font-name 'Ubuntu Mono 11'"
 
 # Personal Prefs
 alias install-tyler="\
