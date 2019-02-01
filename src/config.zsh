@@ -94,7 +94,6 @@ _ apt install -y \
 	vim \
 	keepassx \
 	gnome-tweak-tool \
-	chrome-gnome-shell \
 	clusterssh \
 	network-manager-openvpn \
 	flat-remix \
@@ -104,14 +103,20 @@ _ apt install -y \
 _ snap install --classic vscode && \
 _ snap install --classic slack && \
 _ snap install \
-	gitkraken \
 	discord \
 	spotify \
 	hexchat \
 "
 
+alias install-gitkraken="cd /tmp && \
+_ apt-get update -y && _ apt-get install gconf2 gconf-service && \
+wget https://release.gitkraken.com/linux/gitkraken-amd64.deb && \
+_ dpkg -i gitkraken-amd64.deb && \
+cd - \
+"
+
 # All Font size 11
-# Window Title = Ubuntu Mono Bold
-# Interface =  Ubuntu Mono Regular
-# Document =  Ubuntu Mono Bold Oblique
-# Monospace =  Ubuntu Mono Regular
+# Window Title = DejaVu Sans Mono Bold
+# Interface =  DejaVu Sans Mono Book
+# Document =  DejaVu Sans Mono Bold Oblique
+# Monospace =  DejaVu Sans Mono Book
