@@ -1,23 +1,24 @@
+#!/usr/bin/env zsh
 # ~~~~~~~~~~~~~~~~~~~
 # Kubernetes
 
 if [ $commands[kubectl] ]; then
-        source <(kubectl completion zsh)
+	source <(kubectl completion zsh)
 fi
 
 # ~~~~~~~~~~~~~~~~~~
 # Antigen Setup
 
-_ANTIGEN_INSTALL_DIR="$HOME/.antigen/"
+_ANTIGEN_INSTALL_DIR=""$HOME"/.antigen/"
 export _ANTIGEN_INSTALL_DIR
 mkdir -p "$_ANTIGEN_INSTALL_DIR"
 ANTI_FILE="$_ANTIGEN_INSTALL_DIR/antigen.zsh"
 
-if [ ! -f $ANTI_FILE ]; then 
-	curl -L git.io/antigen > $ANTI_FILE
+if [ ! -f "$ANTI_FILE" ]; then
+	curl -L git.io/antigen >"$ANTI_FILE"
 fi
 
-source $ANTI_FILE
+source "$ANTI_FILE"
 
 # ~~~~~~~~~~~~~~~~~~
 # Antigen Config
@@ -52,7 +53,7 @@ antigen apply
 
 # ~~~~~~~~~~~~~~~~~~~
 # Vars
- 
+
 source "$(dirname $0)/vars.env"
 
 # ~~~~~~~~~~~~~~~~~~~~
@@ -83,38 +84,44 @@ alias tfgraph="terraform graph | dot -Tps -o graph.ps"
 alias aws='docker run --rm -t $(tty &>/dev/null && echo "-i") -e AWS_ACCESS_KEY_ID -e AWS_SECRET_ACCESS_KEY -e AWS_DEFAULT_REGION -v "$(pwd):/project" mesosphere/aws-cli'
 alias awsnodes='aws ec2 describe-instances --query "Reservations[*].Instances[*].[Tags[?Key==\`Name\`].Value[],State.Name,KeyName,InstanceType,InstanceId,ImageId,SubnetId,NetworkInterfaces[*].Association.PublicIp,SecurityGroups[*].GroupId,NetworkInterfaces[*].PrivateIpAddress]"'
 
+# vim > nano
+alias nano="echo 'stop being bad, use vim to edit: '"
+
 # Update
 alias up="_ apt update;_ apt -y full-upgrade;_ apt -y autoremove"
 
+alias install-dracula="mkdir -p ~/.themes \
+&& wget -O Ant-Dracula.tar -P /tmp/ https://github.com/EliverLara/Ant-Dracula/releases/download/v1.3.0/Ant-Dracula.tar \
+&& tar -xvf /tmp/Ant-Dracula.tar -C ~/.themes \
+&& gsettings set org.gnome.desktop.wm.preferences theme Ant-Dracula \
+&& gsettings set org.gnome.desktop.interface gtk-theme Ant-Dracula \
+&& gsettings set org.gnome.desktop.interface font-name 'Ubuntu Mono 11'"
+
 # Personal Prefs
 alias install-tyler="\
-_ add-apt-repository ppa:daniruiz/flat-remix && \
-_ apt update && \
-_ apt install -y \
+_ apt update \
+&& _ apt install -y \
 	vim \
 	keepassx \
 	gnome-tweak-tool \
 	clusterssh \
 	network-manager-openvpn \
-	flat-remix \
-	flat-remix-gnome \
-	flat-remix-gtk \
-	network-manager-openvpn-gnome && \
-_ snap install --classic vscode && \
-_ snap install --classic slack && \
-_ snap install \
-	discord \
+	network-manager-openvpn-gnome \
+&& _ snap install --classic vscode \
+&& _ snap install --classic slack \
+&& _ snap install \
+    discord \
 	spotify \
-	hexchat \
+	hexchat && \
+cd /tmp && wget https://release.gitkraken.com/linux/gitkraken-amd64.deb && _ dpkg -i gitkraken-amd64.deb \
+&& install-dracula
 "
 
-alias install-gitkraken="cd /tmp && \
-_ apt-get update -y && _ apt-get install gconf2 gconf-service && \
-wget https://release.gitkraken.com/linux/gitkraken-amd64.deb && \
-_ dpkg -i gitkraken-amd64.deb && \
-cd - \
-"
+# https://github.com/dracula/dracula-theme
 
+# Intellij - Dracula + Material UI plugin
+# VSCode - Dracula
+# GTK FlatRemix - Ant Dracula
 # All Font size 11
 # Window Title = DejaVu Sans Mono Bold
 # Interface =  DejaVu Sans Mono Book
