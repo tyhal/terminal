@@ -91,7 +91,7 @@ alias nano="echo 'stop being bad, use vim to edit: '"
 alias up="_ apt update;_ apt -y full-upgrade;_ apt -y autoremove"
 
 alias install-dracula="mkdir -p ~/.themes \
-&& wget -O Ant-Dracula.tar -P /tmp/ https://github.com/EliverLara/Ant-Dracula/releases/download/v1.3.0/Ant-Dracula.tar \
+&& wget -O /tmp/Ant-Dracula.tar https://github.com/EliverLara/Ant-Dracula/releases/download/v1.3.0/Ant-Dracula.tar \
 && tar -xvf /tmp/Ant-Dracula.tar -C ~/.themes \
 && gsettings set org.gnome.desktop.wm.preferences theme Ant-Dracula \
 && gsettings set org.gnome.desktop.interface gtk-theme Ant-Dracula \
@@ -109,11 +109,10 @@ _ apt update \
 	network-manager-openvpn-gnome \
 && _ snap install --classic vscode \
 && _ snap install --classic slack \
-&& _ snap install \
-    discord \
-	spotify \
-	hexchat && \
-cd /tmp && wget https://release.gitkraken.com/linux/gitkraken-amd64.deb && _ dpkg -i gitkraken-amd64.deb \
+&& _ snap install discord \
+&& _ snap install spotify \
+&& _ snap install hexchat \
+&& install-gitkraken \
 && install-dracula
 "
 
