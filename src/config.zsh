@@ -102,6 +102,7 @@ alias install-tyler="\
 _ apt update \
 && _ apt install -y \
 	vim \
+	ubuntu-desktop \
 	keepassx \
 	gnome-tweak-tool \
 	clusterssh \
