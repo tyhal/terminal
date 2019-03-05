@@ -1,7 +1,10 @@
 #!/usr/bin/env zsh
 # ~~~~~~~~~~~~~~~~~~~
-# Kubernetes
 
+# Get standard distribution info
+. /etc/os-release
+
+# NOTE: For some reason needs to go early or doesn't work
 if [ $commands[kubectl] ]; then
 	source <(kubectl completion zsh)
 fi
@@ -99,12 +102,20 @@ alias install-dracula="mkdir -p ~/.themes \
 && gsettings set org.gnome.desktop.interface gtk-theme Ant-Dracula \
 && gsettings set org.gnome.desktop.interface font-name 'Ubuntu Mono 11'"
 
-alias install-gitkraken="cd /tmp && \
-_ apt-get update -y && _ apt-get install gconf2 gconf-service && \
-wget https://release.gitkraken.com/linux/gitkraken-amd64.deb && \
-_ dpkg -i gitkraken-amd64.deb && \
-cd - \
-"
+alias install-gitkraken="_ apt-get update -y && _ apt-get install gconf2 gconf-service && \
+wget -O /tmp/gitkraken.deb https://release.gitkraken.com/linux/gitkraken-amd64.deb && \
+_ dpkg -i /tmp/gitkraken.deb"
+
+# Probs update this frequently
+# https://www.jetbrains.com/toolbox/download/download-thanks.html?platform=linux
+alias install-jetbrains="wget -O /tmp/jet.tar.gz https://download.jetbrains.com/toolbox/jetbrains-toolbox-1.13.4801.tar.gz && \
+tar -xzf /tmp/jet.tar.gz && \
+jetbrains-toolbox-*/jetbrains-toolbox"
+
+alias install-megasync="_ apt-get update -y && \
+_ apt-get install -y libc-ares2 libcrypto++6 libmediainfo0v5 libqt5core5a libqt5dbus5 libqt5gui5 libqt5network5 libqt5svg5 libqt5widgets5 libzen0v5 && \
+wget -O /tmp/megasync.deb https://mega.nz/linux/MEGAsync/x${NAME}_${VERSION_ID}/amd64/megasync-x${NAME}_${VERSION_ID}_amd64.deb && \
+_ dpkg -i /tmp/megasync.deb"
 
 # Personal Prefs
 alias install-tyler="\
@@ -123,8 +134,9 @@ _ apt update \
 && _ snap install spotify \
 && _ snap install hexchat \
 && install-gitkraken \
-&& install-dracula
-"
+&& install-dracula \
+&& install-jetbrains \
+&& install-megasync"
 
 # https://github.com/dracula/dracula-theme
 
