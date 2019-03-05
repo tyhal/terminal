@@ -35,7 +35,9 @@ antigen bundle docker
 antigen bundle golang
 
 # External bundles
-antigen bundle dbz/zsh-kubernetes
+if [ $commands[kubectl] ]; then
+	antigen bundle dbz/zsh-kubernetes
+fi
 antigen bundle djui/alias-tips
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle webyneter/docker-aliases.git
