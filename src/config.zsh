@@ -100,11 +100,21 @@ alias install-dracula="mkdir -p ~/.themes \
 && tar -xvf /tmp/Ant-Dracula.tar -C ~/.themes \
 && gsettings set org.gnome.desktop.wm.preferences theme Ant-Dracula \
 && gsettings set org.gnome.desktop.interface gtk-theme Ant-Dracula \
-&& gsettings set org.gnome.desktop.interface font-name 'Ubuntu Mono 11'"
+&& gsettings set org.gnome.desktop.interface monospace-font-name 'Fira Code 9' \
+&& gsettings set org.gnome.desktop.interface document-font-name 'Fira Code 9' \
+&& gsettings set org.gnome.desktop.interface font-name 'Fira Code 9'"
 
 alias install-gitkraken="_ apt-get update -y && _ apt-get install gconf2 gconf-service && \
 wget -O /tmp/gitkraken.deb https://release.gitkraken.com/linux/gitkraken-amd64.deb && \
 _ dpkg -i /tmp/gitkraken.deb"
+
+alias install-hyper="wget -O /tmp/hyper.deb https://releases.hyper.is/download/deb && \
+_ apt-get install /tmp/hyper.deb && \
+hyper i hyper-dracula && \
+hyper i hyperborder && \
+hyper i hyperline && \
+hyper i hyper-search && \
+update-alternatives --install /etc/alternatives/x-terminal-emulator hyper /opt/Hyper/hyper 100"
 
 # Probs update this frequently
 # https://www.jetbrains.com/toolbox/download/download-thanks.html?platform=linux
@@ -126,7 +136,9 @@ _ apt update \
 	keepassx \
 	gnome-tweak-tool \
 	clusterssh \
+	fonts-firacode \
 	network-manager-openvpn \
+	chrome-gnome-shell \
 	network-manager-openvpn-gnome \
 && _ snap install --classic vscode \
 && _ snap install --classic slack \
@@ -134,6 +146,7 @@ _ apt update \
 && _ snap install spotify \
 && _ snap install hexchat \
 && install-gitkraken \
+&& install-hyper \
 && install-dracula \
 && install-jetbrains \
 && install-megasync"
