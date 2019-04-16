@@ -111,7 +111,6 @@ _ dpkg -i /tmp/gitkraken.deb"
 alias install-hyper="wget -O /tmp/hyper.deb https://releases.hyper.is/download/deb && \
 _ apt-get install /tmp/hyper.deb && \
 hyper i hyper-dracula && \
-hyper i hyper-search && \
 update-alternatives --install /etc/alternatives/x-terminal-emulator hyper /opt/Hyper/hyper 100 && \
 echo please set Fira Code as your default font"
 
@@ -139,7 +138,7 @@ _ apt update \
 	network-manager-openvpn \
 	chrome-gnome-shell \
 	network-manager-openvpn-gnome \
-&& _ snap install --classic vscode \
+&& _ snap install --classic code \
 && _ snap install --classic slack \
 && _ snap install discord \
 && _ snap install spotify \
