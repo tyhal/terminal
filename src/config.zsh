@@ -110,9 +110,11 @@ _ dpkg -i /tmp/gitkraken.deb"
 
 alias install-hyper="wget -O /tmp/hyper.deb https://releases.hyper.is/download/deb && \
 _ apt-get install /tmp/hyper.deb && \
-hyper i hyper-dracula && \
-update-alternatives --install /etc/alternatives/x-terminal-emulator hyper /opt/Hyper/hyper 100 && \
-echo please set Fira Code as your default font"
+/opt/Hyper/resources/bin/hyper i hyper-font-ligatures
+/opt/Hyper/resources/bin/hyper i hyper-dracula && \
+/opt/Hyper/resources/bin/hyper i hyper-search && \
+_ update-alternatives --install /etc/alternatives/x-terminal-emulator hyper /opt/Hyper/hyper 100 && \
+sed -i \"s/fontFamily.*/fontFamily:'\\\"Fira Code\\\",monospace',/g\" /home/tyler/.hyper.js"
 
 # Probs update this frequently
 # https://www.jetbrains.com/toolbox/download/download-thanks.html?platform=linux
@@ -148,15 +150,3 @@ _ apt update \
 && install-dracula \
 && install-jetbrains \
 && install-megasync"
-
-# https://github.com/dracula/dracula-theme
-
-# Intellij - Dracula + Material UI plugin
-# VSCode - Dracula
-# GTK FlatRemix - Ant Dracula
-
-# All Font size 11
-# Window Title = DejaVu Sans Mono Bold
-# Interface =  DejaVu Sans Mono Book
-# Document =  DejaVu Sans Mono Bold Oblique
-# Monospace =  DejaVu Sans Mono Book
