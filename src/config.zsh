@@ -127,6 +127,9 @@ _ apt-get install -y libc-ares2 libcrypto++6 libmediainfo0v5 libqt5core5a libqt5
 wget -O /tmp/megasync.deb https://mega.nz/linux/MEGAsync/x${NAME}_${VERSION_ID}/amd64/megasync-x${NAME}_${VERSION_ID}_amd64.deb && \
 _ dpkg -i /tmp/megasync.deb"
 
+alias install-notable="wget -O /tmp/note.deb https://github.com/notable/notable/releases/download/v1.5.1/notable_1.5.1_amd64.deb && \
+_ dpkg -i /tmp/note.deb"
+
 # Personal Prefs
 alias install-tyler="\
 _ apt update \
@@ -140,7 +143,6 @@ _ apt update \
 	network-manager-openvpn \
 	chrome-gnome-shell \
 	network-manager-openvpn-gnome \
-&& _ snap install --classic vscode \
 && _ snap install --classic slack \
 && _ snap install discord \
 && _ snap install spotify \
@@ -149,16 +151,7 @@ _ apt update \
 && install-hyper \
 && install-dracula \
 && install-jetbrains \
+&& install-notable \
 && install-megasync"
 
 # https://github.com/dracula/dracula-theme
-
-# Intellij - Dracula + Material UI plugin
-# VSCode - Dracula
-# GTK FlatRemix - Ant Dracula
-
-# All Font size 11
-# Window Title = DejaVu Sans Mono Bold
-# Interface =  DejaVu Sans Mono Book
-# Document =  DejaVu Sans Mono Bold Oblique
-# Monospace =  DejaVu Sans Mono Book
