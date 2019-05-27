@@ -143,6 +143,10 @@ _ apt update \
 	network-manager-openvpn \
 	chrome-gnome-shell \
 	network-manager-openvpn-gnome \
+<<<<<<< HEAD
+=======
+&& _ snap install --classic code \
+>>>>>>> 21440ec02bc698991bc915376b61adc95a5d97ea
 && _ snap install --classic slack \
 && _ snap install discord \
 && _ snap install spotify \
