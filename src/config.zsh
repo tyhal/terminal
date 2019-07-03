@@ -113,8 +113,8 @@ _ apt-get install /tmp/hyper.deb && \
 /opt/Hyper/resources/bin/hyper i hyper-font-ligatures
 /opt/Hyper/resources/bin/hyper i hyper-dracula && \
 /opt/Hyper/resources/bin/hyper i hyper-search && \
-_ update-alternatives --install /etc/alternatives/x-terminal-emulator hyper /opt/Hyper/hyper 100 && \
-sed -i \"s/fontFamily.*/fontFamily:'\\\"Fira Code\\\",monospace',/g\" /home/tyler/.hyper.js"
+sed -i \"s/fontFamily.*/fontFamily:'\\\"Fira Code\\\",monospace',/g\" /home/$USER/.hyper.js && \
+_ update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator /opt/Hyper/hyper 50"
 
 # Probs update this frequently
 # https://www.jetbrains.com/toolbox/download/download-thanks.html?platform=linux
@@ -130,6 +130,15 @@ _ dpkg -i /tmp/megasync.deb"
 alias install-notable="wget -O /tmp/note.deb https://github.com/notable/notable/releases/download/v1.5.1/notable_1.5.1_amd64.deb && \
 _ dpkg -i /tmp/note.deb"
 
+alias install-screensavers="\
+_ apt install -y \
+xscreensaver \
+xscreensaver-data-extra \
+xscreensaver-gl-extra && \
+echo 'Go to   Settings > Keyboard > Add Custom Shortcut  and createa a shortcut with the command xscreensaver-command -lock \
+And add xscreensaver to your startup applications'
+"
+
 # Personal Prefs
 alias install-tyler="\
 _ apt update \
@@ -143,10 +152,6 @@ _ apt update \
 	network-manager-openvpn \
 	chrome-gnome-shell \
 	network-manager-openvpn-gnome \
-<<<<<<< HEAD
-=======
-&& _ snap install --classic code \
->>>>>>> 21440ec02bc698991bc915376b61adc95a5d97ea
 && _ snap install --classic slack \
 && _ snap install discord \
 && _ snap install spotify \
