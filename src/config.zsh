@@ -78,6 +78,8 @@ alias nuke="git reset --hard HEAD && git clean -df" # -x
 # Project Init
 alias projinit="mkdir -p script && touch LICENSE README.md CONTRIBUTING.md script/test script/bootstrap"
 
+alias poo="ga -u && g commit --amend --no-edit"
+
 # Cmake
 alias cgraph="cmake -Bbuild -H. --graphviz=build/i.dot &&  dot -Tps build/i.dot -o graph.ps"
 alias build="cmake -Bbuild -H. -DCMAKE_BUILD_TYPE=Release -GNinja && cmake --build build"
@@ -85,8 +87,8 @@ alias build="cmake -Bbuild -H. -DCMAKE_BUILD_TYPE=Release -GNinja && cmake --bui
 # Terraform
 alias tfgraph="terraform graph | dot -Tps -o graph.ps"
 
-# vim > nano
-alias nano="echo 'stop being bad, use vim to edit: '"
+# nano > vim 
+alias vim="echo 'stop being bad, use nano to edit: '"
 
 # Update
 alias up="_ apt update;_ apt -y full-upgrade;_ apt -y autoremove"
@@ -129,8 +131,17 @@ _ snap install --dangerous /tmp/note.snap"
 
 alias install-vim="wget -O ~/.vimrc https://raw.githubusercontent.com/mathiasbynens/dotfiles/main/.vimrc ; mkdir -p ~/.vim/swaps ~/.vim/backups ~/.vim/undo"
 
+alias install-screensavers="\
+_ apt install -y \
+xscreensaver \
+xscreensaver-data-extra \
+xscreensaver-gl-extra && \
+echo 'Go to   Settings > Keyboard > Add Custom Shortcut  and createa a shortcut with the command xscreensaver-command -lock \
+And add xscreensaver to your startup applications'
+"
+
 # Personal Prefs
-alias install-tyler="\
+alias install-base="\
 _ apt update \
 && _ apt install -y \
 	vim \

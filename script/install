@@ -2,11 +2,13 @@
 set -e
 
 cd "$(dirname $0)/.."
-
 sudo ./script/bootstrap
-
 chsh -s /usr/bin/zsh
+<<<<<<< HEAD
 
 echo "source $PWD/src/config.zsh" >~/.zshrc
+=======
+echo "source $PWD/src/config.zsh" > ~/.zshrc
+>>>>>>> New alias
 
 echo "Please log out and log back in"
