@@ -78,6 +78,8 @@ alias nuke="git reset --hard HEAD && git clean -xdf"
 # Project Init
 alias projinit="mkdir -p script && touch README.md CONTRIBUTING.md script/test script/bootstrap"
 
+alias poo="ga -u && g commit --amend --no-edit"
+
 # Cmake
 alias cgraph="cmake -Bbuild -H. --graphviz=build/i.dot &&  dot -Tps build/i.dot -o graph.ps"
 alias build="cmake -Bbuild -H. -GNinja && cmake --build build"
@@ -104,6 +106,11 @@ alias install-dracula="mkdir -p ~/.themes \
 && gsettings set org.gnome.desktop.interface document-font-name 'Fira Code 9' \
 && gsettings set org.gnome.desktop.interface font-name 'Fira Code 9'"
 
+alias install-numix="mkdir -p ~/.themes \
+sudo add-apt-repository ppa:numix/ppa \
+sudo apt update \
+sudo apt install numix-gtk-theme numix-icon-theme-circle numix-icon-theme-square"
+
 alias install-gitkraken="_ apt-get update -y && _ apt-get install gconf2 gconf-service && \
 wget -O /tmp/gitkraken.deb https://release.gitkraken.com/linux/gitkraken-amd64.deb && \
 _ dpkg -i /tmp/gitkraken.deb"
@@ -113,8 +120,8 @@ _ apt-get install /tmp/hyper.deb && \
 /opt/Hyper/resources/bin/hyper i hyper-font-ligatures
 /opt/Hyper/resources/bin/hyper i hyper-dracula && \
 /opt/Hyper/resources/bin/hyper i hyper-search && \
-_ update-alternatives --install /etc/alternatives/x-terminal-emulator hyper /opt/Hyper/hyper 100 && \
-sed -i \"s/fontFamily.*/fontFamily:'\\\"Fira Code\\\",monospace',/g\" /home/tyler/.hyper.js"
+sed -i \"s/fontFamily.*/fontFamily:'\\\"Fira Code\\\",monospace',/g\" /home/$USER/.hyper.js && \
+_ update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator /opt/Hyper/hyper 50"
 
 # Probs update this frequently
 # https://www.jetbrains.com/toolbox/download/download-thanks.html?platform=linux
@@ -122,16 +129,25 @@ alias install-jetbrains="wget -O /tmp/jet.tar.gz https://download.jetbrains.com/
 tar -xzf /tmp/jet.tar.gz && \
 jetbrains-toolbox-*/jetbrains-toolbox"
 
-alias install-megasync="_ apt-get update -y && \
+alias install-megasync="_ apt update -y && \
 _ apt-get install -y libc-ares2 libcrypto++6 libmediainfo0v5 libqt5core5a libqt5dbus5 libqt5gui5 libqt5network5 libqt5svg5 libqt5widgets5 libzen0v5 && \
-wget -O /tmp/megasync.deb https://mega.nz/linux/MEGAsync/x${NAME}_${VERSION_ID}/amd64/megasync-x${NAME}_${VERSION_ID}_amd64.deb && \
+wget -O /tmp/megasync.deb https://mega.nz/linux/MEGAsync/x${NAME}_${VERSION_ID}/amd64/megasync-x${NAME}_${VERSION_IDVERSION_ID}_amd64.deb && \
 _ dpkg -i /tmp/megasync.deb"
 
 alias install-notable="wget -O /tmp/note.deb https://github.com/notable/notable/releases/download/v1.5.1/notable_1.5.1_amd64.deb && \
 _ dpkg -i /tmp/note.deb"
 
+alias install-screensavers="\
+_ apt install -y \
+xscreensaver \
+xscreensaver-data-extra \
+xscreensaver-gl-extra && \
+echo 'Go to   Settings > Keyboard > Add Custom Shortcut  and createa a shortcut with the command xscreensaver-command -lock \
+And add xscreensaver to your startup applications'
+"
+
 # Personal Prefs
-alias install-tyler="\
+alias install-base="\
 _ apt update \
 && _ apt install -y \
 	vim \
@@ -140,17 +156,10 @@ _ apt update \
 	gnome-tweak-tool \
 	clusterssh \
 	fonts-firacode \
-	network-manager-openvpn \
 	chrome-gnome-shell \
-	network-manager-openvpn-gnome \
-<<<<<<< HEAD
-=======
-&& _ snap install --classic code \
->>>>>>> 21440ec02bc698991bc915376b61adc95a5d97ea
 && _ snap install --classic slack \
 && _ snap install discord \
 && _ snap install spotify \
-&& _ snap install hexchat \
 && install-gitkraken \
 && install-hyper \
 && install-dracula \
