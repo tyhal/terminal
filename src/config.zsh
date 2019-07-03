@@ -112,7 +112,17 @@ wget -O /tmp/gitkraken.deb https://release.gitkraken.com/linux/gitkraken-amd64.d
 _ dpkg -i /tmp/gitkraken.deb && \
 _ apt-get install -f"
 
+<<<<<<< HEAD
 alias install-term="_ apt-get update -y && _ apt-get install -y dconf-cli && git clone https://github.com/dracula/gnome-terminal /tmp/drac-term; /tmp/drac-term/install.sh"
+=======
+alias install-hyper="wget -O /tmp/hyper.deb https://releases.hyper.is/download/deb && \
+_ apt-get install /tmp/hyper.deb && \
+/opt/Hyper/resources/bin/hyper i hyper-font-ligatures
+/opt/Hyper/resources/bin/hyper i hyper-dracula && \
+/opt/Hyper/resources/bin/hyper i hyper-search && \
+sed -i \"s/fontFamily.*/fontFamily:'\\\"Fira Code\\\",monospace',/g\" /home/$USER/.hyper.js && \
+_ update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator /opt/Hyper/hyper 50"
+>>>>>>> New alias
 
 # Probs update this frequently
 # https://www.jetbrains.com/toolbox/download/download-thanks.html?platform=linux
@@ -140,6 +150,15 @@ echo 'Go to   Settings > Keyboard > Add Custom Shortcut  and createa a shortcut 
 And add xscreensaver to your startup applications'
 "
 
+alias install-screensavers="\
+_ apt install -y \
+xscreensaver \
+xscreensaver-data-extra \
+xscreensaver-gl-extra && \
+echo 'Go to   Settings > Keyboard > Add Custom Shortcut  and createa a shortcut with the command xscreensaver-command -lock \
+And add xscreensaver to your startup applications'
+"
+
 # Personal Prefs
 alias install-base="\
 _ apt update \
@@ -152,7 +171,10 @@ _ apt update \
 	network-manager-openvpn \
 	chrome-gnome-shell \
 	network-manager-openvpn-gnome \
+<<<<<<< HEAD
 && _ snap install --classic code \
+=======
+>>>>>>> New alias
 && _ snap install --classic slack \
 && _ snap install --classic go \
 && _ snap install --classic kubectl \
