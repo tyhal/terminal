@@ -1,4 +1,4 @@
-#New Linux OS setup
+# New Linux OS setup
 For setting up a new ubuntu whatevernumber environment.
 Follow the steps below & have fun
 
@@ -16,9 +16,15 @@ You can use this one to install some useful programs
 ```bash
 install-base
 ```
-It will install the following
-- 
 
+It will install the following
+- vim
+- ubuntu-desktop
+- keepassx
+- gnome-tweak-tool
+- clusterssh
+- fonts-firacode
+- chrome-gnome-shell
 
 Stolened from this handsome chap: https://github.com/tyhal/zsh
 (Changes made to be more global and add more alias)

@@ -74,11 +74,11 @@ alias suse="boop opensuse bash"
 
 # Git
 alias nuke="git reset --hard HEAD && git clean -xdf"
+# Git add, commit, push
+alias poo="gau && gcan! && gp"
 
 # Project Init
 alias projinit="mkdir -p script && touch README.md CONTRIBUTING.md script/test script/bootstrap"
-
-alias poo="ga -u && g commit --amend --no-edit"
 
 # Cmake
 alias cgraph="cmake -Bbuild -H. --graphviz=build/i.dot &&  dot -Tps build/i.dot -o graph.ps"
@@ -92,10 +92,20 @@ alias aws='docker run --rm -t $(tty &>/dev/null && echo "-i") -e AWS_ACCESS_KEY_
 alias awsnodes='aws ec2 describe-instances --query "Reservations[*].Instances[*].[Tags[?Key==\`Name\`].Value[],State.Name,KeyName,InstanceType,InstanceId,ImageId,SubnetId,NetworkInterfaces[*].Association.PublicIp,SecurityGroups[*].GroupId,NetworkInterfaces[*].PrivateIpAddress]"'
 
 # vim > nano
-alias nano="echo 'stop being bad, use vim to edit: '"
+alias vim="echo 'stop being bad, use nano to edit: '"
 
 # Update
-alias up="_ apt update;_ apt -y full-upgrade;_ apt -y autoremove"
+alias updoot="_ apt update;_ apt -y full-upgrade;_ apt -y autoremove"
+
+alias setup-docker="_ apt install docker.io \
+&& _ usermod -aG docker $USER \
+&& _ systemctl restart docker \
+&& echo 'Log out/in to finish the setup'"
+
+alias install-numix="mkdir -p ~/.themes \
+&& _ add-apt-repository ppa:numix/ppa \
+&& _ apt-get update \
+&& _ apt-get install numix-gtk-theme numix-icon-theme-circle numix-icon-theme-square"
 
 alias install-dracula="mkdir -p ~/.themes \
 && wget -O /tmp/Ant-Dracula.tar https://github.com/EliverLara/Ant-Dracula/releases/download/v1.3.0/Ant-Dracula.tar \
@@ -105,11 +115,6 @@ alias install-dracula="mkdir -p ~/.themes \
 && gsettings set org.gnome.desktop.interface monospace-font-name 'Fira Code 9' \
 && gsettings set org.gnome.desktop.interface document-font-name 'Fira Code 9' \
 && gsettings set org.gnome.desktop.interface font-name 'Fira Code 9'"
-
-alias install-numix="mkdir -p ~/.themes \
-sudo add-apt-repository ppa:numix/ppa \
-sudo apt update \
-sudo apt install numix-gtk-theme numix-icon-theme-circle numix-icon-theme-square"
 
 alias install-gitkraken="_ apt-get update -y && _ apt-get install gconf2 gconf-service && \
 wget -O /tmp/gitkraken.deb https://release.gitkraken.com/linux/gitkraken-amd64.deb && \
@@ -129,22 +134,20 @@ alias install-jetbrains="wget -O /tmp/jet.tar.gz https://download.jetbrains.com/
 tar -xzf /tmp/jet.tar.gz && \
 jetbrains-toolbox-*/jetbrains-toolbox"
 
-alias install-megasync="_ apt update -y && \
+alias install-megasync="_ apt-get update -y && \
 _ apt-get install -y libc-ares2 libcrypto++6 libmediainfo0v5 libqt5core5a libqt5dbus5 libqt5gui5 libqt5network5 libqt5svg5 libqt5widgets5 libzen0v5 && \
-wget -O /tmp/megasync.deb https://mega.nz/linux/MEGAsync/x${NAME}_${VERSION_ID}/amd64/megasync-x${NAME}_${VERSION_IDVERSION_ID}_amd64.deb && \
+wget -O /tmp/megasync.deb https://mega.nz/linux/MEGAsync/x${NAME}_${VERSION_ID}/amd64/megasync-x${NAME}_${VERSION_ID}_amd64.deb && \
 _ dpkg -i /tmp/megasync.deb"
 
 alias install-notable="wget -O /tmp/note.deb https://github.com/notable/notable/releases/download/v1.5.1/notable_1.5.1_amd64.deb && \
 _ dpkg -i /tmp/note.deb"
 
-alias install-screensavers="\
-_ apt install -y \
+alias install-screensavers="_ apt install -y \
 xscreensaver \
 xscreensaver-data-extra \
-xscreensaver-gl-extra && \
-echo 'Go to   Settings > Keyboard > Add Custom Shortcut  and createa a shortcut with the command xscreensaver-command -lock \
-And add xscreensaver to your startup applications'
-"
+xscreensaver-gl-extra \
+&& echo 'Go to   Settings > Keyboard > Add Custom Shortcut  and createa a shortcut with the command xscreensaver-command -lock \
+And add xscreensaver to your startup applications'"
 
 # Personal Prefs
 alias install-base="\
@@ -156,10 +159,13 @@ _ apt update \
 	gnome-tweak-tool \
 	clusterssh \
 	fonts-firacode \
+	network-manager-openvpn \
 	chrome-gnome-shell \
+	network-manager-openvpn-gnome \
 && _ snap install --classic slack \
 && _ snap install discord \
 && _ snap install spotify \
+&& _ snap install hexchat \
 && install-gitkraken \
 && install-hyper \
 && install-dracula \
