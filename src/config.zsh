@@ -104,23 +104,15 @@ alias install-dracula="mkdir -p ~/.themes \
 && gsettings set org.gnome.desktop.interface document-font-name 'Fira Code 9' \
 && gsettings set org.gnome.desktop.interface font-name 'Fira Code 9'"
 
-alias install-gitkraken="_ apt-get update -y && _ apt-get install gconf2 gconf-service && \
+alias install-gitkraken="_ apt-get update -y && _ apt-get -y install python gconf2 gconf-service && \
 wget -O /tmp/gitkraken.deb https://release.gitkraken.com/linux/gitkraken-amd64.deb && \
 _ dpkg -i /tmp/gitkraken.deb"
-
-alias install-hyper="wget -O /tmp/hyper.deb https://releases.hyper.is/download/deb && \
-_ apt-get install /tmp/hyper.deb && \
-/opt/Hyper/resources/bin/hyper i hyper-font-ligatures
-/opt/Hyper/resources/bin/hyper i hyper-dracula && \
-/opt/Hyper/resources/bin/hyper i hyper-search && \
-_ update-alternatives --install /etc/alternatives/x-terminal-emulator hyper /opt/Hyper/hyper 100 && \
-sed -i \"s/fontFamily.*/fontFamily:'\\\"Fira Code\\\",monospace',/g\" /home/tyler/.hyper.js"
 
 # Probs update this frequently
 # https://www.jetbrains.com/toolbox/download/download-thanks.html?platform=linux
 alias install-jetbrains="wget -O /tmp/jet.tar.gz https://download.jetbrains.com/toolbox/jetbrains-toolbox-1.13.4801.tar.gz && \
-tar -xzf /tmp/jet.tar.gz && \
-jetbrains-toolbox-*/jetbrains-toolbox"
+tar -xzf /tmp/jet.tar.gz -C /tmp && \
+_ mv /tmp/jetbrains-toolbox-*/jetbrains-toolbox /usr/local/bin/"
 
 alias install-megasync="_ apt-get update -y && \
 _ apt-get install -y libc-ares2 libcrypto++6 libmediainfo0v5 libqt5core5a libqt5dbus5 libqt5gui5 libqt5network5 libqt5svg5 libqt5widgets5 libzen0v5 && \
@@ -143,19 +135,15 @@ _ apt update \
 	network-manager-openvpn \
 	chrome-gnome-shell \
 	network-manager-openvpn-gnome \
-<<<<<<< HEAD
-=======
 && _ snap install --classic code \
->>>>>>> 21440ec02bc698991bc915376b61adc95a5d97ea
 && _ snap install --classic slack \
 && _ snap install discord \
 && _ snap install spotify \
 && _ snap install hexchat \
 && install-gitkraken \
-&& install-hyper \
+&& install-megasync \
 && install-dracula \
 && install-jetbrains \
-&& install-notable \
-&& install-megasync"
+&& install-notable"
 
 # https://github.com/dracula/dracula-theme
