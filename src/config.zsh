@@ -95,11 +95,13 @@ alias nano="echo 'stop being bad, use vim to edit: '"
 # Update
 alias up="_ apt update;_ apt -y full-upgrade;_ apt -y autoremove"
 
-alias install-dracula="mkdir -p ~/.themes \
-&& wget -O /tmp/Ant-Dracula.tar https://github.com/EliverLara/Ant-Dracula/releases/download/v1.3.0/Ant-Dracula.tar \
-&& tar -xvf /tmp/Ant-Dracula.tar -C ~/.themes \
-&& gsettings set org.gnome.desktop.wm.preferences theme Ant-Dracula \
-&& gsettings set org.gnome.desktop.interface gtk-theme Ant-Dracula \
+alias install-theme="mkdir -p ~/.themes \
+&& wget -O /tmp/t.zip https://github.com/daniruiz/Super-Flat-Remix-GNOME-theme/archive/master.zip \
+&& unzip /tmp/t.zip -d ~/.themes \
+&& _ apt update -y && _ apt-get install -y fonts-firacode \
+&& gsettings set org.gnome.desktop.wm.preferences theme Flat-Remix-GTK-Dark \
+&& gsettings set org.gnome.desktop.interface icon-theme 'Flat-Remix-Dark' \
+&& gsettings set org.gnome.desktop.interface gtk-theme Flat-Remix-Dark \
 && gsettings set org.gnome.desktop.interface monospace-font-name 'Fira Code 9' \
 && gsettings set org.gnome.desktop.interface document-font-name 'Fira Code 9' \
 && gsettings set org.gnome.desktop.interface font-name 'Fira Code 9'"
@@ -131,7 +133,6 @@ _ apt update \
 	keepassx \
 	gnome-tweak-tool \
 	clusterssh \
-	fonts-firacode \
 	network-manager-openvpn \
 	chrome-gnome-shell \
 	network-manager-openvpn-gnome \
@@ -141,9 +142,6 @@ _ apt update \
 && _ snap install hexchat \
 && install-gitkraken \
 && install-megasync \
-&& install-dracula \
+&& install-theme \
 && install-jetbrains \
 && install-notable"
-
-# https://github.com/dracula/dracula-theme
-
