@@ -113,8 +113,15 @@ _ dpkg -i /tmp/gitkraken.deb && \
 _ apt-get install -f"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 alias install-term="_ apt-get update -y && _ apt-get install -y dconf-cli && git clone https://github.com/dracula/gnome-terminal /tmp/drac-term; /tmp/drac-term/install.sh"
 =======
+=======
+alias install-mega="wget -P ~/Downloads/ 'https://mega.nz/linux/MEGAsync/xUbuntu_18.04/amd64/megasync-xUbuntu_18.04_amd64.deb' \
+&& _ dpkg -i ~/Downloads/megasync-xUbuntu_18.04_amd64.deb \
+&& _ apt install -f"
+
+>>>>>>> adds megasync install to the config
 alias install-hyper="wget -O /tmp/hyper.deb https://releases.hyper.is/download/deb && \
 _ apt-get install /tmp/hyper.deb && \
 /opt/Hyper/resources/bin/hyper i hyper-font-ligatures
@@ -189,3 +196,7 @@ _ apt update \
 && install-notes \
 && install-term"
 
+<<<<<<< HEAD
+=======
+# https://github.com/dracula/dracula-theme
+>>>>>>> adds megasync install to the config
