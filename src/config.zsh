@@ -96,15 +96,23 @@ alias nano="echo 'stop being bad, use vim to edit: '"
 alias up="_ apt update;_ apt -y full-upgrade;_ apt -y autoremove"
 
 alias install-theme="mkdir -p ~/.themes \
-&& wget -O /tmp/t.zip https://github.com/daniruiz/Super-Flat-Remix-GNOME-theme/archive/master.zip \
-&& unzip /tmp/t.zip -d ~/.themes \
-&& _ apt update -y && _ apt-get install -y fonts-firacode \
-&& gsettings set org.gnome.desktop.wm.preferences theme Flat-Remix-GTK-Dark \
-&& gsettings set org.gnome.desktop.interface icon-theme 'Flat-Remix-Dark' \
-&& gsettings set org.gnome.desktop.interface gtk-theme Flat-Remix-Dark \
+&& wget -O /tmp/a.zip https://github.com/daniruiz/flat-remix-gtk/archive/master.zip \
+&& wget -O /tmp/b.zip https://github.com/daniruiz/Super-Flat-Remix-GNOME-theme/archive/master.zip \
+&& unzip /tmp/a.zip -d /tmp/ \
+&& unzip /tmp/b.zip -d /tmp/ \
+&& cp -r /tmp/flat-remix-gtk-master/Flat-Remix-* ~/.themes \
+&& cp -r /tmp/flat-remix-gnome-master/Flat-Remix-* ~/.themes \
+&& _ add-apt-repository -y ppa:numix/ppa \
+&& _ apt update -y && _ apt-get install -y fonts-firacode numix-icon-theme \
+&& gsettings set org.gnome.desktop.wm.preferences theme 'Flat-Remix-Dark' \
+&& gsettings set org.gnome.desktop.interface icon-theme 'Numix' \
+&& gsettings set org.gnome.desktop.interface gtk-theme 'Flat-Remix-GTK-Yellow-Dark' \
 && gsettings set org.gnome.desktop.interface monospace-font-name 'Fira Code 9' \
 && gsettings set org.gnome.desktop.interface document-font-name 'Fira Code 9' \
-&& gsettings set org.gnome.desktop.interface font-name 'Fira Code 9'"
+&& gsettings set org.gnome.desktop.interface font-name 'Fira Code 9' \
+&& gsettings set org.gnome.shell.extensions.dash-to-dock autohide false \
+&& gsettings set org.gnome.shell.extensions.dash-to-dock dock-fixed false \
+&& gsettings set org.gnome.shell.extensions.dash-to-dock intellihide false"
 
 alias install-gitkraken="_ apt-get update -y && _ apt-get -y install python gconf2 gconf-service && \
 wget -O /tmp/gitkraken.deb https://release.gitkraken.com/linux/gitkraken-amd64.deb && \
