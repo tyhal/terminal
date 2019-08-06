@@ -72,6 +72,8 @@ alias debian="boop debian"
 alias alpine="boop alpine"
 alias suse="boop opensuse bash"
 
+alias watch-logs="dmesg -THw"
+
 # Git
 alias nuke="git reset --hard HEAD && git clean -xdf"
 
@@ -129,7 +131,7 @@ _ apt-get install -y libc-ares2 libcrypto++6 libmediainfo0v5 libqt5core5a libqt5
 wget -O /tmp/megasync.deb https://mega.nz/linux/MEGAsync/x${NAME}_${VERSION_ID}/amd64/megasync-x${NAME}_${VERSION_ID}_amd64.deb && \
 _ dpkg -i /tmp/megasync.deb"
 
-alias install-notable="wget -O /tmp/note.deb https://github.com/notable/notable/releases/download/v1.5.1/notable_1.5.1_amd64.deb && \
+alias install-notable="wget -O /tmp/note.deb https://github.com/notable/notable/releases/download/v1.6.1/notable_1.6.1_amd64.deb && \
 _ dpkg -i /tmp/note.deb"
 
 # Personal Prefs
