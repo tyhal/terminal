@@ -75,7 +75,7 @@ alias watch-logs="dmesg -THw"
 alias nuke="git reset --hard HEAD && git clean -xdf"
 
 # Project Init
-alias projinit="mkdir -p script && touch README.md CONTRIBUTING.md script/test script/bootstrap"
+alias projinit="mkdir -p script && touch LICENSE README.md CONTRIBUTING.md script/test script/bootstrap"
 
 # Cmake
 alias cgraph="cmake -Bbuild -H. --graphviz=build/i.dot &&  dot -Tps build/i.dot -o graph.ps"
