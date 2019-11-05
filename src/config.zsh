@@ -67,6 +67,7 @@ alias ubuntu="boop ubuntu"
 alias centos="boop centos"
 alias debian="boop debian"
 alias alpine="boop alpine"
+alias fedora="boop fedora"
 alias suse="boop opensuse/leap bash"
 
 alias watch-logs="dmesg -THw"
