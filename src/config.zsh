@@ -122,7 +122,7 @@ _ dpkg -i /tmp/gitkraken.deb"
 
 # Probs update this frequently
 # https://www.jetbrains.com/toolbox/download/download-thanks.html?platform=linux
-alias install-jetbrains="wget -O /tmp/jet.tar.gz https://download.jetbrains.com/toolbox/jetbrains-toolbox-1.13.4801.tar.gz && \
+alias install-jetbrains="wget -O /tmp/jet.tar.gz https://download.jetbrains.com/toolbox/jetbrains-toolbox-1.16.6067.tar.gz && \
 tar -xzf /tmp/jet.tar.gz -C /tmp && \
 _ mv /tmp/jetbrains-toolbox-*/jetbrains-toolbox /usr/local/bin/"
 
@@ -131,7 +131,7 @@ _ apt-get install -y libc-ares2 libcrypto++6 libmediainfo0v5 libqt5core5a libqt5
 wget -O /tmp/megasync.deb https://mega.nz/linux/MEGAsync/x${NAME}_${VERSION_ID}/amd64/megasync-x${NAME}_${VERSION_ID}_amd64.deb && \
 _ dpkg -i /tmp/megasync.deb"
 
-alias install-notable="wget -O /tmp/note.deb https://github.com/notable/notable/releases/download/v1.6.1/notable_1.6.1_amd64.deb && \
+alias install-notable="wget -O /tmp/note.deb https://github.com/notable/notable/releases/download/v1.8.1/notable_1.8.1_amd64.deb && \
 _ dpkg -i /tmp/note.deb"
 
 # Personal Prefs
@@ -147,6 +147,8 @@ _ apt update \
 	chrome-gnome-shell \
 	network-manager-openvpn-gnome \
 && _ snap install --classic slack \
+&& _ snap install --classic go \
+&& _ snap install --classic kubectl \
 && _ snap install discord \
 && _ snap install spotify \
 && _ snap install hexchat \
