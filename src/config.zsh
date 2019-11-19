@@ -47,9 +47,6 @@ antigen bundle webyneter/docker-aliases.git
 antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle chrissicool/zsh-256color
 
-# Syntax highlighting bundle.
-antigen bundle zsh-users/zsh-syntax-highlighting
-
 # Load the theme.
 antigen theme denysdovhan/spaceship-prompt
 
@@ -70,7 +67,8 @@ alias ubuntu="boop ubuntu"
 alias centos="boop centos"
 alias debian="boop debian"
 alias alpine="boop alpine"
-alias suse="boop opensuse bash"
+alias fedora="boop fedora"
+alias suse="boop opensuse/leap bash"
 
 alias watch-logs="dmesg -THw"
 
@@ -78,11 +76,11 @@ alias watch-logs="dmesg -THw"
 alias nuke="git reset --hard HEAD && git clean -xdf"
 
 # Project Init
-alias projinit="mkdir -p script && touch README.md CONTRIBUTING.md script/test script/bootstrap"
+alias projinit="mkdir -p script && touch LICENSE README.md CONTRIBUTING.md script/test script/bootstrap"
 
 # Cmake
 alias cgraph="cmake -Bbuild -H. --graphviz=build/i.dot &&  dot -Tps build/i.dot -o graph.ps"
-alias build="cmake -Bbuild -H. -GNinja && cmake --build build"
+alias build="cmake -Bbuild -H. -DCMAKE_BUILD_TYPE=Release -GNinja && cmake --build build"
 
 # Terraform
 alias tfgraph="terraform graph | dot -Tps -o graph.ps"
@@ -105,9 +103,9 @@ alias install-theme="mkdir -p ~/.themes \
 && cp -r /tmp/flat-remix-gtk-master/Flat-Remix-* ~/.themes \
 && cp -r /tmp/flat-remix-gnome-master/Flat-Remix-* ~/.themes \
 && _ add-apt-repository -y ppa:numix/ppa \
-&& _ apt update -y && _ apt-get install -y fonts-firacode numix-icon-theme \
+&& _ apt update -y && _ apt-get install -y fonts-firacode papirus-icon-theme \
 && gsettings set org.gnome.desktop.wm.preferences theme 'Flat-Remix-Dark' \
-&& gsettings set org.gnome.desktop.interface icon-theme 'Numix' \
+&& gsettings set org.gnome.desktop.interface icon-theme 'Papirus' \
 && gsettings set org.gnome.desktop.interface gtk-theme 'Flat-Remix-GTK-Yellow-Dark' \
 && gsettings set org.gnome.desktop.interface monospace-font-name 'Fira Code 9' \
 && gsettings set org.gnome.desktop.interface document-font-name 'Fira Code 9' \
