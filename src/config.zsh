@@ -79,6 +79,8 @@ alias suse="boop opensuse/leap bash"
 
 alias watch-logs="dmesg -THw"
 
+alias ngot="crie --config=ngot.yml"
+
 # Git
 alias nuke="git reset --hard HEAD && git clean -xdf"
 
