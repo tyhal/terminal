@@ -9,6 +9,13 @@ if [ $commands[kubectl] ]; then
 	source <(kubectl completion zsh)
 fi
 
+
+cdlg ()   
+{  
+   cd "$1"  
+   ls | grep -ni "$2"
+}
+
 # ~~~~~~~~~~~~~~~~~~
 # Antigen Setup
 
@@ -96,20 +103,22 @@ alias nano="echo 'stop being bad, use vim to edit: '"
 alias up="_ apt update;_ apt -y full-upgrade;_ apt -y autoremove"
 
 alias install-theme="mkdir -p ~/.themes \
-&& wget -O /tmp/a.zip https://github.com/daniruiz/flat-remix-gtk/archive/master.zip \
-&& wget -O /tmp/b.zip https://github.com/daniruiz/Super-Flat-Remix-GNOME-theme/archive/master.zip \
-&& unzip /tmp/a.zip -d /tmp/ \
-&& unzip /tmp/b.zip -d /tmp/ \
+&& wget -O /tmp/flat-gtk.zip https://github.com/daniruiz/flat-remix-gtk/archive/master.zip \
+&& wget -O /tmp/flat-gnome.zip https://github.com/daniruiz/Super-Flat-Remix-GNOME-theme/archive/master.zip \
+&& wget -O /tmp/mono.zip https://download.jetbrains.com/fonts/JetBrainsMono-1.0.2.zip \
+&& unzip /tmp/flat-gtk.zip -d /tmp/ \
+&& unzip /tmp/flat-gnome.zip -d /tmp/ \
+&& unzip /tmp/mono.zip -d $HOME/.fonts \
 && cp -r /tmp/flat-remix-gtk-master/Flat-Remix-* ~/.themes \
 && cp -r /tmp/flat-remix-gnome-master/Flat-Remix-* ~/.themes \
 && _ add-apt-repository -y ppa:numix/ppa \
-&& _ apt update -y && _ apt-get install -y fonts-firacode papirus-icon-theme \
+&& _ apt update -y && _ apt-get install -y papirus-icon-theme \
 && gsettings set org.gnome.desktop.wm.preferences theme 'Flat-Remix-Dark' \
 && gsettings set org.gnome.desktop.interface icon-theme 'Papirus' \
 && gsettings set org.gnome.desktop.interface gtk-theme 'Flat-Remix-GTK-Yellow-Dark' \
-&& gsettings set org.gnome.desktop.interface monospace-font-name 'Fira Code 9' \
-&& gsettings set org.gnome.desktop.interface document-font-name 'Fira Code 9' \
-&& gsettings set org.gnome.desktop.interface font-name 'Fira Code 9' \
+&& gsettings set org.gnome.desktop.interface monospace-font-name 'JetBrains Mono 10' \
+&& gsettings set org.gnome.desktop.interface document-font-name 'JetBrains Mono 10' \
+&& gsettings set org.gnome.desktop.interface font-name 'JetBrains Mono 10' \
 && gsettings set org.gnome.shell.extensions.dash-to-dock autohide false \
 && gsettings set org.gnome.shell.extensions.dash-to-dock dock-fixed false \
 && gsettings set org.gnome.shell.extensions.dash-to-dock intellihide false"
@@ -129,7 +138,7 @@ _ apt-get install -y libc-ares2 libcrypto++6 libmediainfo0v5 libqt5core5a libqt5
 wget -O /tmp/megasync.deb https://mega.nz/linux/MEGAsync/x${NAME}_${VERSION_ID}/amd64/megasync-x${NAME}_${VERSION_ID}_amd64.deb && \
 _ dpkg -i /tmp/megasync.deb"
 
-alias install-notable="wget -O /tmp/note.deb https://github.com/notable/notable/releases/download/v1.8.1/notable_1.8.1_amd64.deb && \
+alias install-notable="wget -O /tmp/note.deb https://github.com/notable/notable/releases/download/v1.8.2/notable_1.8.2_amd64.deb && \
 _ dpkg -i /tmp/note.deb"
 
 # Personal Prefs
