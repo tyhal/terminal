@@ -105,19 +105,11 @@ alias nano="echo 'stop being bad, use vim to edit: '"
 alias up="_ apt update;_ apt -y full-upgrade;_ apt -y autoremove"
 
 alias install-theme="mkdir -p ~/.themes \
-&& wget -O /tmp/flat-gtk.zip https://github.com/daniruiz/flat-remix-gtk/archive/master.zip \
-&& wget -O /tmp/flat-gnome.zip https://github.com/daniruiz/Super-Flat-Remix-GNOME-theme/archive/master.zip \
 && wget -O /tmp/mono.zip https://download.jetbrains.com/fonts/JetBrainsMono-1.0.2.zip \
-&& unzip /tmp/flat-gtk.zip -d /tmp/ \
-&& unzip /tmp/flat-gnome.zip -d /tmp/ \
 && unzip /tmp/mono.zip -d $HOME/.fonts \
-&& cp -r /tmp/flat-remix-gtk-master/Flat-Remix-* ~/.themes \
-&& cp -r /tmp/flat-remix-gnome-master/Flat-Remix-* ~/.themes \
-&& _ add-apt-repository -y ppa:numix/ppa \
-&& _ apt update -y && _ apt-get install -y papirus-icon-theme \
-&& gsettings set org.gnome.desktop.wm.preferences theme 'Flat-Remix-Dark' \
-&& gsettings set org.gnome.desktop.interface icon-theme 'Papirus' \
-&& gsettings set org.gnome.desktop.interface gtk-theme 'Flat-Remix-GTK-Yellow-Dark' \
+&& gsettings set org.gnome.desktop.wm.preferences theme 'Yaru-Dark' \
+&& gsettings set org.gnome.desktop.interface icon-theme 'Yaru' \
+&& gsettings set org.gnome.desktop.interface gtk-theme 'Yaru' \
 && gsettings set org.gnome.desktop.interface monospace-font-name 'JetBrains Mono 10' \
 && gsettings set org.gnome.desktop.interface document-font-name 'JetBrains Mono 10' \
 && gsettings set org.gnome.desktop.interface font-name 'JetBrains Mono 10' \
@@ -158,6 +150,7 @@ _ apt update \
 && _ snap install --classic slack \
 && _ snap install --classic go \
 && _ snap install --classic kubectl \
+&& _ snap instal --beta authy \
 && _ snap install discord \
 && _ snap install spotify \
 && _ snap install hexchat \
