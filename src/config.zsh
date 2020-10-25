@@ -9,13 +9,6 @@ if [ $commands[kubectl] ]; then
 	source <(kubectl completion zsh)
 fi
 
-
-cdlg ()   
-{  
-   cd "$1"  
-   ls | grep -ni "$2"
-}
-
 # ~~~~~~~~~~~~~~~~~~
 # Antigen Setup
 
@@ -94,10 +87,6 @@ alias build="cmake -Bbuild -H. -DCMAKE_BUILD_TYPE=Release -GNinja && cmake --bui
 # Terraform
 alias tfgraph="terraform graph | dot -Tps -o graph.ps"
 
-# AWS
-alias aws='docker run --rm -t $(tty &>/dev/null && echo "-i") -e AWS_ACCESS_KEY_ID -e AWS_SECRET_ACCESS_KEY -e AWS_DEFAULT_REGION -v "$(pwd):/project" mesosphere/aws-cli'
-alias awsnodes='aws ec2 describe-instances --query "Reservations[*].Instances[*].[Tags[?Key==\`Name\`].Value[],State.Name,KeyName,InstanceType,InstanceId,ImageId,SubnetId,NetworkInterfaces[*].Association.PublicIp,SecurityGroups[*].GroupId,NetworkInterfaces[*].PrivateIpAddress]"'
-
 # vim > nano
 alias nano="echo 'stop being bad, use vim to edit: '"
 
@@ -123,7 +112,7 @@ _ dpkg -i /tmp/gitkraken.deb"
 
 # Probs update this frequently
 # https://www.jetbrains.com/toolbox/download/download-thanks.html?platform=linux
-alias install-jetbrains="wget -O /tmp/jet.tar.gz https://download.jetbrains.com/toolbox/jetbrains-toolbox-1.16.6067.tar.gz && \
+alias install-jetbrains="wget -O /tmp/jet.tar.gz https://download.jetbrains.com/toolbox/jetbrains-toolbox-1.18.7455.tar.gz && \
 tar -xzf /tmp/jet.tar.gz -C /tmp && \
 _ mv /tmp/jetbrains-toolbox-*/jetbrains-toolbox /usr/local/bin/"
 
@@ -155,6 +144,7 @@ _ apt update \
 && _ snap install discord \
 && _ snap install spotify \
 && _ snap install hexchat \
+&& _ snap install --beta authy \
 && install-gitkraken \
 && install-megasync \
 && install-theme \
