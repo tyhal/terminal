@@ -72,10 +72,8 @@ alias suse="boop opensuse/leap bash"
 
 alias watch-logs="dmesg -THw"
 
-alias ngot="crie --config=ngot.yml"
-
 # Git
-alias nuke="git reset --hard HEAD && git clean -xdf"
+alias nuke="git reset --hard HEAD && git clean -df" # -x
 
 # Project Init
 alias projinit="mkdir -p script && touch LICENSE README.md CONTRIBUTING.md script/test script/bootstrap"
