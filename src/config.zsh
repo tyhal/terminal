@@ -112,7 +112,7 @@ _ dpkg -i /tmp/gitkraken.deb"
 
 # Probs update this frequently
 # https://www.jetbrains.com/toolbox/download/download-thanks.html?platform=linux
-alias install-jetbrains="wget -O /tmp/jet.tar.gz https://download.jetbrains.com/toolbox/jetbrains-toolbox-1.18.7455.tar.gz && \
+alias install-jetbrains="wget -O /tmp/jet.tar.gz https://download.jetbrains.com/toolbox/jetbrains-toolbox-1.18.7609.tar.gz && \
 tar -xzf /tmp/jet.tar.gz -C /tmp && \
 _ mv /tmp/jetbrains-toolbox-*/jetbrains-toolbox /usr/local/bin/"
 
@@ -121,8 +121,8 @@ _ apt-get install -y libc-ares2 libcrypto++6 libmediainfo0v5 libqt5core5a libqt5
 wget -O /tmp/megasync.deb https://mega.nz/linux/MEGAsync/x${NAME}_${VERSION_ID}/amd64/megasync-x${NAME}_${VERSION_ID}_amd64.deb && \
 _ dpkg -i /tmp/megasync.deb"
 
-alias install-notable="wget -O /tmp/note.deb https://github.com/notable/notable/releases/download/v1.8.2/notable_1.8.2_amd64.deb && \
-_ dpkg -i /tmp/note.deb"
+alias install-notes="wget -O /tmp/note.snap https://github.com/obsidianmd/obsidian-releases/releases/download/v0.9.11/obsidian_0.9.11_amd64.snap && \
+_ snap install --dangerous /tmp/note.snap"
 
 # Personal Prefs
 alias install-tyler="\
@@ -139,13 +139,12 @@ _ apt update \
 && _ snap install --classic slack \
 && _ snap install --classic go \
 && _ snap install --classic kubectl \
-&& _ snap instal --beta authy \
+&& _ snap install --beta authy \
 && _ snap install discord \
 && _ snap install spotify \
-&& _ snap install hexchat \
 && _ snap install --beta authy \
 && install-gitkraken \
 && install-megasync \
 && install-theme \
 && install-jetbrains \
-&& install-notable"
+&& install-notes"
