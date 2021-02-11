@@ -91,8 +91,9 @@ alias nano="echo 'stop being bad, use vim to edit: '"
 # Update
 alias up="_ apt update;_ apt -y full-upgrade;_ apt -y autoremove"
 
+# https://www.jetbrains.com/lp/mono/
 alias install-theme="mkdir -p ~/.themes \
-&& wget -O /tmp/mono.zip https://download.jetbrains.com/fonts/JetBrainsMono-1.0.2.zip \
+&& wget -O /tmp/mono.zip https://download.jetbrains.com/fonts/JetBrainsMono-2.225.zip \
 && unzip /tmp/mono.zip -d $HOME/.fonts \
 && gsettings set org.gnome.desktop.wm.preferences theme 'Yaru-Dark' \
 && gsettings set org.gnome.desktop.interface icon-theme 'Yaru' \
@@ -108,9 +109,11 @@ alias install-gitkraken="_ apt-get update -y && _ apt-get -y install python gcon
 wget -O /tmp/gitkraken.deb https://release.gitkraken.com/linux/gitkraken-amd64.deb && \
 _ dpkg -i /tmp/gitkraken.deb"
 
+alias install-term="_ apt-get update -y && _ apt-get install -y dconf-cli && git clone https://github.com/dracula/gnome-terminal /tmp/drac-term; /tmp/drac-term/install.sh"
+
 # Probs update this frequently
 # https://www.jetbrains.com/toolbox/download/download-thanks.html?platform=linux
-alias install-jetbrains="wget -O /tmp/jet.tar.gz https://download.jetbrains.com/toolbox/jetbrains-toolbox-1.18.7609.tar.gz && \
+alias install-jetbrains="wget -O /tmp/jet.tar.gz https://download.jetbrains.com/toolbox/jetbrains-toolbox-1.20.7940.tar.gz && \
 tar -xzf /tmp/jet.tar.gz -C /tmp && \
 _ mv /tmp/jetbrains-toolbox-*/jetbrains-toolbox /usr/local/bin/"
 
@@ -119,7 +122,7 @@ _ apt-get install -y libc-ares2 libcrypto++6 libmediainfo0v5 libqt5core5a libqt5
 wget -O /tmp/megasync.deb https://mega.nz/linux/MEGAsync/x${NAME}_${VERSION_ID}/amd64/megasync-x${NAME}_${VERSION_ID}_amd64.deb && \
 _ dpkg -i /tmp/megasync.deb"
 
-alias install-notes="wget -O /tmp/note.snap https://github.com/obsidianmd/obsidian-releases/releases/download/v0.9.11/obsidian_0.9.11_amd64.snap && \
+alias install-notes="wget -O /tmp/note.snap https://github.com/obsidianmd/obsidian-releases/releases/download/v0.10.13/obsidian_0.10.13_amd64.snap && \
 _ snap install --dangerous /tmp/note.snap"
 
 # Personal Prefs
@@ -146,5 +149,6 @@ _ apt update \
 && install-megasync \
 && install-theme \
 && install-jetbrains \
-&& install-notes"
+&& install-notes \
+&& install-term"
 
