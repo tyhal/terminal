@@ -48,7 +48,7 @@ antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle chrissicool/zsh-256color
 
 # Load the theme.
-antigen theme denysdovhan/spaceship-prompt
+antigen theme tyhal/spaceship-prompt
 
 # Tell Antigen that you're done.
 antigen apply
@@ -107,7 +107,8 @@ alias install-theme="mkdir -p ~/.themes \
 
 alias install-gitkraken="_ apt-get update -y && _ apt-get -y install python gconf2 gconf-service && \
 wget -O /tmp/gitkraken.deb https://release.gitkraken.com/linux/gitkraken-amd64.deb && \
-_ dpkg -i /tmp/gitkraken.deb"
+_ dpkg -i /tmp/gitkraken.deb && \
+_ apt-get install -f"
 
 alias install-term="_ apt-get update -y && _ apt-get install -y dconf-cli && git clone https://github.com/dracula/gnome-terminal /tmp/drac-term; /tmp/drac-term/install.sh"
 
@@ -117,10 +118,11 @@ alias install-jetbrains="wget -O /tmp/jet.tar.gz https://download.jetbrains.com/
 tar -xzf /tmp/jet.tar.gz -C /tmp && \
 _ mv /tmp/jetbrains-toolbox-*/jetbrains-toolbox /usr/local/bin/"
 
+#_ apt-get install -y libc-ares2 libcrypto++6 libmediainfo0v5 libqt5core5a libqt5dbus5 libqt5gui5 libqt5network5 libqt5svg5 libqt5widgets5 libzen0v5 && \
 alias install-megasync="_ apt-get update -y && \
-_ apt-get install -y libc-ares2 libcrypto++6 libmediainfo0v5 libqt5core5a libqt5dbus5 libqt5gui5 libqt5network5 libqt5svg5 libqt5widgets5 libzen0v5 && \
 wget -O /tmp/megasync.deb https://mega.nz/linux/MEGAsync/x${NAME}_${VERSION_ID}/amd64/megasync-x${NAME}_${VERSION_ID}_amd64.deb && \
-_ dpkg -i /tmp/megasync.deb"
+_ dpkg -i /tmp/megasync.deb && \
+_ apt-get install -f"
 
 alias install-notes="wget -O /tmp/note.snap https://github.com/obsidianmd/obsidian-releases/releases/download/v0.10.13/obsidian_0.10.13_amd64.snap && \
 _ snap install --dangerous /tmp/note.snap"
