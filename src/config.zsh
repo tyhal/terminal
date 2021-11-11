@@ -136,19 +136,16 @@ _ apt update \
 	vim \
 	ubuntu-desktop \
 	keepassx \
-	gnome-tweak-tool \
 	clusterssh \
 	network-manager-openvpn \
 	chrome-gnome-shell \
 	network-manager-openvpn-gnome \
-&& _ snap install --classic code \
 && _ snap install --classic slack \
 && _ snap install --classic go \
 && _ snap install --classic kubectl \
 && _ snap install --beta authy \
 && _ snap install discord \
 && _ snap install spotify \
-&& _ snap install --beta authy \
 && install-gitkraken \
 && install-megasync \
 && install-theme \
