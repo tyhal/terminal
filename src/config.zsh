@@ -4,11 +4,6 @@
 # Get standard distribution info
 . /etc/os-release
 
-# NOTE: For some reason needs to go early or doesn't work
-if [ $commands[kubectl] ]; then
-	source <(kubectl completion zsh)
-fi
-
 # ~~~~~~~~~~~~~~~~~~
 # Antigen Setup
 
@@ -19,6 +14,12 @@ ANTI_FILE="$_ANTIGEN_INSTALL_DIR/antigen.zsh"
 
 if [ ! -f "$ANTI_FILE" ]; then
 	curl -L git.io/antigen >"$ANTI_FILE"
+fi
+
+if [ ! $commands[starship] ]; then
+	set -x
+        sudo snap install starship
+	set +x
 fi
 
 source "$ANTI_FILE"
@@ -46,9 +47,6 @@ antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle webyneter/docker-aliases.git
 antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle chrissicool/zsh-256color
-
-# Load the theme.
-antigen theme tyhal/spaceship-prompt
 
 # Tell Antigen that you're done.
 antigen apply
@@ -93,7 +91,7 @@ alias up="_ apt update;_ apt -y full-upgrade;_ apt -y autoremove"
 
 # https://www.jetbrains.com/lp/mono/
 alias install-theme="mkdir -p ~/.themes \
-&& wget -O /tmp/mono.zip https://download.jetbrains.com/fonts/JetBrainsMono-2.225.zip \
+&& wget -O /tmp/mono.zip https://download.jetbrains.com/fonts/JetBrainsMono-2.242.zip \
 && unzip /tmp/mono.zip -d $HOME/.fonts \
 && gsettings set org.gnome.desktop.wm.preferences theme 'Yaru-Dark' \
 && gsettings set org.gnome.desktop.interface icon-theme 'Yaru' \
@@ -114,7 +112,7 @@ alias install-term="_ apt-get update -y && _ apt-get install -y dconf-cli && git
 
 # Probs update this frequently
 # https://www.jetbrains.com/toolbox/download/download-thanks.html?platform=linux
-alias install-jetbrains="wget -O /tmp/jet.tar.gz https://download.jetbrains.com/toolbox/jetbrains-toolbox-1.20.7940.tar.gz && \
+alias install-jetbrains="wget -O /tmp/jet.tar.gz https://download-cdn.jetbrains.com/toolbox/jetbrains-toolbox-1.24.12080.tar.gz && \
 tar -xzf /tmp/jet.tar.gz -C /tmp && \
 _ mv /tmp/jetbrains-toolbox-*/jetbrains-toolbox /usr/local/bin/"
 
@@ -124,7 +122,7 @@ wget -O /tmp/megasync.deb https://mega.nz/linux/MEGAsync/x${NAME}_${VERSION_ID}/
 _ dpkg -i /tmp/megasync.deb && \
 _ apt-get install -f"
 
-alias install-notes="wget -O /tmp/note.snap https://github.com/obsidianmd/obsidian-releases/releases/download/v0.10.13/obsidian_0.10.13_amd64.snap && \
+alias install-notes="wget -O /tmp/note.snap https://github.com/obsidianmd/obsidian-releases/releases/download/v0.14.15/obsidian_0.14.15_amd64.snap && \
 _ snap install --dangerous /tmp/note.snap"
 
 alias install-vim="wget -O ~/.vimrc https://raw.githubusercontent.com/mathiasbynens/dotfiles/main/.vimrc ; mkdir -p ~/.vim/swaps ~/.vim/backups ~/.vim/undo"
@@ -147,10 +145,11 @@ _ apt update \
 && _ snap install --beta authy \
 && _ snap install discord \
 && _ snap install spotify \
-&& _ snap install --beta authy \
 && install-gitkraken \
 && install-megasync \
 && install-theme \
 && install-jetbrains \
 && install-notes \
 && install-term"
+
+eval "$(starship init zsh)"
