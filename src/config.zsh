@@ -103,11 +103,6 @@ alias install-theme="mkdir -p ~/.themes \
 && gsettings set org.gnome.shell.extensions.dash-to-dock dock-fixed false \
 && gsettings set org.gnome.shell.extensions.dash-to-dock intellihide false"
 
-alias install-gitkraken="_ apt-get update -y && _ apt-get -y install python gconf2 gconf-service && \
-wget -O /tmp/gitkraken.deb https://release.gitkraken.com/linux/gitkraken-amd64.deb && \
-_ dpkg -i /tmp/gitkraken.deb && \
-_ apt-get install -f"
-
 alias install-term="_ apt-get update -y && _ apt-get install -y dconf-cli && git clone https://github.com/dracula/gnome-terminal /tmp/drac-term; /tmp/drac-term/install.sh"
 
 # Probs update this frequently
@@ -145,7 +140,6 @@ _ apt update \
 && _ snap install --beta authy \
 && _ snap install discord \
 && _ snap install spotify \
-&& install-gitkraken \
 && install-megasync \
 && install-theme \
 && install-jetbrains \
