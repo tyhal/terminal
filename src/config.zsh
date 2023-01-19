@@ -37,16 +37,19 @@ antigen bundle z
 antigen bundle docker-compose
 antigen bundle docker
 antigen bundle golang
+antigen bundle kubectl
+antigen bundle aws
+antigen bundle microk8s
+antigen bundle mongocli
+antigen bundle postgres
+antigen bundle python
+antigen bundle redis-cli
+antigen bundle terraform
 
 # External bundles
-if [ $commands[kubectl] ]; then
-	antigen bundle dbz/zsh-kubernetes
-fi
 antigen bundle djui/alias-tips
 antigen bundle zsh-users/zsh-syntax-highlighting
-antigen bundle webyneter/docker-aliases.git
 antigen bundle zsh-users/zsh-autosuggestions
-antigen bundle chrissicool/zsh-256color
 
 # Tell Antigen that you're done.
 antigen apply
@@ -91,7 +94,7 @@ alias up="_ apt update;_ apt -y full-upgrade;_ apt -y autoremove"
 
 # https://www.jetbrains.com/lp/mono/
 alias install-theme="mkdir -p ~/.themes \
-&& wget -O /tmp/mono.zip https://download.jetbrains.com/fonts/JetBrainsMono-2.242.zip \
+&& wget -O /tmp/mono.zip https://github.com/ryanoasis/nerd-fonts/releases/download/v2.3.0/JetBrainsMono.zip \
 && unzip /tmp/mono.zip -d $HOME/.fonts \
 && gsettings set org.gnome.desktop.wm.preferences theme 'Yaru-Dark' \
 && gsettings set org.gnome.desktop.interface icon-theme 'Yaru' \
@@ -103,11 +106,9 @@ alias install-theme="mkdir -p ~/.themes \
 && gsettings set org.gnome.shell.extensions.dash-to-dock dock-fixed false \
 && gsettings set org.gnome.shell.extensions.dash-to-dock intellihide false"
 
-alias install-term="_ apt-get update -y && _ apt-get install -y dconf-cli && git clone https://github.com/dracula/gnome-terminal /tmp/drac-term; /tmp/drac-term/install.sh"
-
 # Probs update this frequently
 # https://www.jetbrains.com/toolbox/download/download-thanks.html?platform=linux
-alias install-jetbrains="wget -O /tmp/jet.tar.gz https://download-cdn.jetbrains.com/toolbox/jetbrains-toolbox-1.24.12080.tar.gz && \
+alias install-jetbrains="wget -O /tmp/jet.tar.gz https://download-cdn.jetbrains.com/toolbox/jetbrains-toolbox-1.25.12627.tar.gz && \
 tar -xzf /tmp/jet.tar.gz -C /tmp && \
 _ mv /tmp/jetbrains-toolbox-*/jetbrains-toolbox /usr/local/bin/"
 
@@ -143,7 +144,6 @@ _ apt update \
 && install-megasync \
 && install-theme \
 && install-jetbrains \
-&& install-notes \
-&& install-term"
+&& install-notes"
 
 eval "$(starship init zsh)"
