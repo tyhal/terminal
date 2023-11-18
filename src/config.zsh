@@ -4,55 +4,16 @@
 # Get standard distribution info
 . /etc/os-release
 
-# ~~~~~~~~~~~~~~~~~~
-# Antigen Setup
+plugin_source() {
+	ZSH_PLUGIN="/usr/share/$1/$1.zsh"
+	if [ ! -f "$ZSH_PLUGIN" ]; then
+		sudo apt install "$1"
+	fi
+	source "$ZSH_PLUGIN"
+}
 
-_ANTIGEN_INSTALL_DIR=""$HOME"/.antigen/"
-export _ANTIGEN_INSTALL_DIR
-mkdir -p "$_ANTIGEN_INSTALL_DIR"
-ANTI_FILE="$_ANTIGEN_INSTALL_DIR/antigen.zsh"
-
-if [ ! -f "$ANTI_FILE" ]; then
-	curl -L git.io/antigen >"$ANTI_FILE"
-fi
-
-if [ ! $commands[starship] ]; then
-	set -x
-        sudo snap install starship
-	set +x
-fi
-
-source "$ANTI_FILE"
-
-# ~~~~~~~~~~~~~~~~~~
-# Antigen Config
-
-antigen use oh-my-zsh
-
-# Bundles from the default repo (robbyrussell's oh-my-zsh).
-antigen bundle git
-antigen bundle pip
-antigen bundle command-not-found
-antigen bundle z
-antigen bundle docker-compose
-antigen bundle docker
-antigen bundle golang
-antigen bundle kubectl
-antigen bundle aws
-antigen bundle microk8s
-antigen bundle mongocli
-antigen bundle postgres
-antigen bundle python
-antigen bundle redis-cli
-antigen bundle terraform
-
-# External bundles
-antigen bundle djui/alias-tips
-antigen bundle zsh-users/zsh-syntax-highlighting
-antigen bundle zsh-users/zsh-autosuggestions
-
-# Tell Antigen that you're done.
-antigen apply
+plugin_source "zsh-syntax-highlighting"
+plugin_source "zsh-autosuggestions"
 
 # ~~~~~~~~~~~~~~~~~~~
 # Vars
@@ -61,6 +22,9 @@ source "$(dirname $0)/vars.env"
 
 # ~~~~~~~~~~~~~~~~~~~~
 # Alias
+
+alias k="kubectl"
+alias _="sudo"
 
 # Easy jump into a container
 alias boop="docker run --rm -it"
@@ -85,9 +49,6 @@ alias build="cmake -Bbuild -H. -DCMAKE_BUILD_TYPE=Release -GNinja && cmake --bui
 
 # Terraform
 alias tfgraph="terraform graph | dot -Tps -o graph.ps"
-
-# vim > nano
-alias nano="echo 'stop being bad, use vim to edit: '"
 
 # Update
 alias up="_ apt update;_ apt -y full-upgrade;_ apt -y autoremove"
@@ -146,4 +107,10 @@ _ apt update \
 && install-jetbrains \
 && install-notes"
 
+if [ ! $commands[starship] ]; then
+	set -x
+        sudo snap install starship
+	set +x
+fi
+export STARSHIP_CONFIG="$(dirname $0)/starship.toml"
 eval "$(starship init zsh)"
