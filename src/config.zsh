@@ -4,7 +4,7 @@
 # Get standard distribution info
 . /etc/os-release
 
-plugin_source() {
+plugin_source_apt() {
 	ZSH_PLUGIN="/usr/share/$1/$1.zsh"
 	if [ ! -f "$ZSH_PLUGIN" ]; then
 		sudo apt install "$1"
@@ -12,8 +12,19 @@ plugin_source() {
 	source "$ZSH_PLUGIN"
 }
 
-plugin_source "zsh-syntax-highlighting"
-plugin_source "zsh-autosuggestions"
+plugin_source_git() {
+	ZSH_PLUGIN="$HOME/.zsh_plugins/$2/$2.zsh"
+	if [ ! -f "$ZSH_PLUGIN" ]; then
+		git clone "git@github.com:$1/$2.git" "$HOME/.zsh_plugins/$2"
+	fi
+	source "$ZSH_PLUGIN"
+}
+
+plugin_source_apt "zsh-syntax-highlighting"
+plugin_source_apt "zsh-autosuggestions"
+plugin_source_git "zsh-users" "zsh-history-substring-search"
+bindkey "$terminfo[kcuu1]" history-substring-search-up
+bindkey "$terminfo[kcud1]" history-substring-search-down
 
 # ~~~~~~~~~~~~~~~~~~~
 # Vars
@@ -109,7 +120,7 @@ _ apt update \
 
 if [ ! $commands[starship] ]; then
 	set -x
-        sudo snap install starship
+        curl -sS https://starship.rs/install.sh | sh
 	set +x
 fi
 export STARSHIP_CONFIG="$(dirname $0)/starship.toml"
