@@ -3,9 +3,7 @@ set -e
 
 cd "$(dirname $0)/.."
 
-sudo ./script/bootstrap
-
-chsh -s /usr/bin/zsh
+chsh -s "$(which zsh)"
 
 echo "source $PWD/src/config.zsh" >~/.zshrc
 
