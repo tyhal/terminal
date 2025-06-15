@@ -13,6 +13,8 @@ plugin_source_git() {
 plugin_source_git "zsh-users" "zsh-history-substring-search"
 bindkey "$terminfo[kcuu1]" history-substring-search-up
 bindkey "$terminfo[kcud1]" history-substring-search-down
+bindkey '^[[H' beginning-of-line
+bindkey '^[[F' end-of-line
 plugin_source_git "zsh-users" "zsh-autosuggestions"
 plugin_source_git "zsh-users" "zsh-syntax-highlighting"
 
