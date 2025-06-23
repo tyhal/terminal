@@ -1,4 +1,5 @@
 #!/usr/bin/env zsh
+
 # ~~~~~~~~~~~~~~~~~~~
 
 plugin_source_git() {
@@ -23,6 +24,13 @@ plugin_source_git "agkozak" "zsh-z" "zsh-z.plugin.zsh"
 # Vars
 
 source "$(dirname $0)/vars.env"
+
+# ~~~~~~~~~~~~~~~~~~~
+# Autocomplete
+
+fpath=("$(dirname $0)/completion" ~/.zsh/completion $fpath)
+autoload -U compinit
+compinit
 
 # ~~~~~~~~~~~~~~~~~~~~
 # Alias

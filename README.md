@@ -2,8 +2,8 @@
 
 OS Agnostic - Just needs:
 
-- git
-- zsh
+* git
+* zsh
 
 ```bash
 ./script/install
