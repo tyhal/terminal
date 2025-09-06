@@ -1,0 +1,21 @@
+#!/bin/sh
+set -e
+
+cd "$(dirname $0)/.."
+
+# core part to allow zshrc to be modified
+[ -f ~/.zshrc ] || touch ~/.zshrc
+zshrc_include="source \"$HOME/.zshrc_tyhal\""
+grep -qxF "$zshrc_include" ~/.zshrc || echo "$zshrc_include" >> ~/.zshrc
+
+for dot in $PWD/dot/* ; do
+  dotname="$(basename "$dot")"
+  [ -f ~/.$dotname ] || ln -s "$dot" "$HOME/.$dotname"
+done
+
+for bin in $PWD/bin/* ; do
+  binname="$(basename "$bin")"
+  [ -f "/usr/local/bin/$binname" ] || sudo ln -s "$bin" "/usr/local/bin/$binname"
+done
+
+echo "chsh -s "$(which zsh)""

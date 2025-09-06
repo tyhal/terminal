@@ -1,0 +1,12 @@
+#!/usr/bin/env zsh
+set -e
+comp_file="$HOME/.zsh/completion/_$1"
+if [ ! $commands["$1"] ]; then
+    if [ ! -f "$comp_file" ] || [ "$(which $1)" -nt "$comp_file" ]; then
+        echo "Updating completion for $1"
+        mkdir -p "$(dirname "$comp_file")"
+        $1 completion zsh > $comp_file
+    fi
+else
+    echo "$1 not found"
+fi
