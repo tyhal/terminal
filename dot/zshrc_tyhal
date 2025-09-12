@@ -28,7 +28,7 @@ zsh-completion crie
 zsh-completion podman
 zsh-completion docker
 
-if [ ! $commands[brew] ]; then
+if [ $commands[brew] ]; then
   fpath=("$(brew --prefix)/share/zsh/site-functions" $fpath)
 fi
 
@@ -64,9 +64,17 @@ alias build="cmake -Bbuild -H. -DCMAKE_BUILD_TYPE=Release -GNinja && cmake --bui
 alias tfgraph="terraform graph | dot -Tps -o graph.ps"
 
 # update
-if [ ! $commands[apt] ]; then
-	alias up="_ apt update;_ apt -y full-upgrade;_ apt -y autoremove"
+up_cmd=""
+if [ $commands[apt] ]; then
+	up_cmd="_ apt update;_ apt -y full-upgrade;_ apt -y autoremove;$up_cmd"
 fi
+if [ $commands[brew] ]; then
+	up_cmd="brew update;brew upgrade;brew cleanup;$up_cmd"
+fi
+if [ $commands[flatpak] ]; then
+	up_cmd="flatpak update;$up_cmd"
+fi
+alias up="$up_cmd"
 
 # history
 HISTFILE=~/.zsh_history
