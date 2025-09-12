@@ -21,13 +21,17 @@ bindkey '^[[H' beginning-of-line
 bindkey '^[[F' end-of-line
 
 # autocompletes
+fpath=("$HOME/.zsh/completion" $fpath)
 zsh-completion kubectl
 zsh-completion crie
 zsh-completion podman
 zsh-completion docker
 
+if [ ! $commands[brew] ]; then
+  fpath=("$(brew --prefix)/etc/bash_completion.d/" $fpath)
+fi
+
 # autocomplete load
-fpath=("$HOME/.zsh/completion" $fpath)
 autoload -U compinit
 compinit
 
