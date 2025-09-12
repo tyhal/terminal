@@ -29,7 +29,7 @@ zsh-completion podman
 zsh-completion docker
 
 if [ ! $commands[brew] ]; then
-  fpath=("$(brew --prefix)/etc/bash_completion.d/" $fpath)
+  fpath=("$(brew --prefix)/share/zsh/site-functions" $fpath)
 fi
 
 # autocomplete load
