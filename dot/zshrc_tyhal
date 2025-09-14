@@ -14,7 +14,6 @@ plugin_source_git "zsh-users" "zsh-history-substring-search" "zsh-history-substr
 plugin_source_git "zsh-users" "zsh-syntax-highlighting" "zsh-syntax-highlighting.zsh"
 plugin_source_git "zsh-users" "zsh-completions" "zsh-completions.plugin.zsh"
 plugin_source_git "agkozak" "zsh-z" "zsh-z.plugin.zsh"
-plugin_source_git "Aloxaf" "fzf-tab" "fzf-tab.plugin.zsh"
 plugin_source_git "MichaelAquilina" "zsh-you-should-use" "you-should-use.plugin.zsh"
 
 # bindings
