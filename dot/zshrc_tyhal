@@ -67,7 +67,7 @@ alias tfgraph="terraform graph | dot -Tps -o graph.ps"
 
 # update
 up_cmd=""
-if [ $commands[apt] ]; then
+if [ $commands[apt-get] ]; then
 	up_cmd="_ apt update;_ apt -y full-upgrade;_ apt -y autoremove;$up_cmd"
 fi
 if [ $commands[brew] ]; then
