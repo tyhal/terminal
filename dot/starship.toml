@@ -6,3 +6,10 @@ disabled = true
 
 [git_branch]
 symbol = ''
+
+[status]
+disabled = false
+symbol = ""
+
+[shell]
+disabled = false
