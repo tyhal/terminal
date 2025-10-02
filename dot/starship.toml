@@ -3,3 +3,6 @@ disabled = false
 
 [aws]
 disabled = true
+
+[git_branch]
+symbol = ''
